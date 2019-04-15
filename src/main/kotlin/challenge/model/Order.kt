@@ -10,6 +10,7 @@ class Order(val customer: Customer, val address: Address) {
         private set
     val totalAmount
         get() = items.sumByDouble { it.total }
+    val id = UUID.randomUUID().toString()
 
     fun addProduct(product: Product, quantity: Int) {
         var productAlreadyAdded = items.any { it.product == product }
@@ -33,5 +34,12 @@ class Order(val customer: Customer, val address: Address) {
 
     private fun close() {
         closedAt = Date()
+    }
+
+    fun process(block: (Invoice, List<OrderItem>) -> Unit) {
+        if (closedAt == null) {
+            throw Exception("The order has not closed!")
+        }
+        block(payment!!.invoice, items)
     }
 }
