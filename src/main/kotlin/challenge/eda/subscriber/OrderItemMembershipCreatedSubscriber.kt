@@ -10,9 +10,9 @@ import challenge.infra.eda.Subscriber
 import challenge.infra.logger.LoggerFactory
 
 /**
- * Caso o pagamento seja uma assinatura de serviÁo, È preciso:
+ * Caso o pagamento seja uma assinatura de servi√ßo, √© preciso:
  * - ativar a assinatura;
- * - notificar o usu·rio atravÈs de e-mail sobre isto;
+ * - notificar o usu√°rio atrav√©s de e-mail sobre isto;
  */
 class OrderItemMembershipCreatedSubscriber : Subscriber {
 

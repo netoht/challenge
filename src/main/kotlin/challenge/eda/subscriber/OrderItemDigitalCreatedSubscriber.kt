@@ -11,8 +11,8 @@ import challenge.infra.logger.LoggerFactory
 import java.util.*
 
 /**
- * Caso o pagamento seja de alguma mídia digital (música, vídeo), além de:
- * - enviar a descrição da compra por e-mail ao comprador,
+ * Caso o pagamento seja de alguma mÃ­dia digital (mÃºsica, vÃ­deo), alÃ©m de:
+ * - enviar a descriÃ§Ã£o da compra por e-mail ao comprador,
  * - conceder um voucher de desconto de R$ 10 ao comprador associado ao pagamento.
  */
 class OrderItemDigitalCreatedSubscriber : Subscriber {
