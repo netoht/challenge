@@ -5,7 +5,7 @@ import challenge.eda.Topics.ORDER_ITEM_DIGITAL_CREATED
 import challenge.eda.event.EmailNotificationCreated
 import challenge.eda.event.OrderItemDigitalCreated
 import challenge.infra.eda.Message
-import challenge.infra.eda.PubSub
+import challenge.infra.eda.PubSubService
 import challenge.infra.eda.Subscriber
 import challenge.infra.logger.LoggerFactory
 import java.util.*
@@ -42,8 +42,8 @@ class OrderItemDigitalCreatedSubscriber : Subscriber {
         orderItem: OrderItemDigitalCreated,
         promotionalCode: String
     ) {
-        logger.info("msg=sending email, order=${orderItem.invoice.order.id}, customer=${orderItem.invoice.order.customer}, item=${orderItem.item.product.name}")
-        PubSub.publish(
+        logger.info("msg=sending email, order=${orderItem.invoice.order.id}, customer=${orderItem.invoice.order.customer.email}, item=${orderItem.item.product.name}")
+        PubSubService.publish(
             EMAIL_NOTIFICATION_CREATED.name, Message(
                 EmailNotificationCreated(
                     recipient = orderItem.invoice.order.customer.email,

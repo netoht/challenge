@@ -7,16 +7,26 @@ import java.util.logging.LogRecord
 
 class Formatter : Formatter() {
 
-    private val messageFormat = MessageFormat("[{0,date} {0,time}] {3} [{2}] {1}\t: [T:{4}] {5}\n")
+    private val messageFormat = MessageFormat("[{0,date} {0,time}] {1} [{2}]: #{3} {4}\n")
 
     override fun format(record: LogRecord): String {
-        val arguments = arrayOfNulls<Any>(6)
+        var className = record.sourceClassName.substringAfterLast(".") + "." + record.sourceMethodName
+
+        val limit = 60
+        while (className.length < limit) {
+            className += " "
+        }
+        if (className.length > limit) {
+            className = className.substring(0, limit)
+        }
+
+        val arguments = arrayOfNulls<Any>(5)
         arguments[0] = Date(record.millis)
-        arguments[1] = record.sourceClassName.substringAfterLast(".")
-        arguments[2] = record.sourceMethodName
-        arguments[3] = record.level
-        arguments[4] = Thread.currentThread().id
-        arguments[5] = record.message
+        arguments[1] = record.level
+        arguments[2] = className
+        arguments[3] = Thread.currentThread().id
+        arguments[4] = record.message
+
         return messageFormat.format(arguments)
     }
 }

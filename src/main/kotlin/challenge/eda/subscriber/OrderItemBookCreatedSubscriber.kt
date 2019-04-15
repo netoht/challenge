@@ -7,7 +7,7 @@ import challenge.infra.eda.Subscriber
 import challenge.infra.logger.LoggerFactory
 
 /**
- * Caso o pagamento seja um livro comum, você precisa gerar o 'shipping label' com uma notificação de
+ * Caso o pagamento seja um livro comum, é preciso gerar o 'shipping label' com uma notificação de
  * que trata-se de um item isento de impostos conforme disposto na Constituição Art. 150, VI, d.
  */
 class OrderItemBookCreatedSubscriber : Subscriber {

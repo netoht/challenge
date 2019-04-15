@@ -7,7 +7,7 @@ import challenge.eda.event.OrderItemPhysicalCreated
 import challenge.infra.logger.LoggerFactory
 
 /**
- * Se o pagamento for para um item físico, você deverá gerar
+ * Se o pagamento for para um item físico, deverá gerar
  * um 'shipping label' para o mesmo ser colocado na caixa do envio
  */
 class OrderItemPhysicalCreatedSubscriber : Subscriber {
